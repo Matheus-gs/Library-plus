@@ -1,0 +1,295 @@
+/* CSS */
+
+/* Reset */
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  scroll-behavior: smooth;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Variáveis */
+:root {
+  --title: 700 3rem 'Poppins', sans-serif;
+  --text-content: 400 1rem 'Poppins', sans-serif;
+
+  --text-default: #e0e0e0;
+
+  --menu-links: #e0e0e0;
+  --menu-links-hovered: #00f88d;
+  --dark: #111;
+  --dark-two: #222;
+
+  /*  */
+  --filter: rgb(0, 0, 0, 0.8);
+  --filter-lighter: rgb(0, 0, 0, 0.5);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: -webkit-linear-gradient(45deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+}
+
+/* Navegação */
+header {
+  width: 100%;
+}
+
+body {
+  background-color: var(--dark);
+}
+
+.navbar-default {
+  width: 100%;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+
+  /* position: fixed; */
+
+  z-index: 100;
+  padding: 15px;
+
+  border-bottom: 1px solid var(--dark-two);
+
+  background-color: var(--dark);
+
+  /* background-color: transparent; */
+}
+
+.logo h1 {
+  color: var(--menu-links);
+  font: 700 1.8rem 'Poppins', sans-serif;
+}
+
+.logo h1 span {
+  font: 700 1.8rem 'Poppins', sans-serif;
+  background: -webkit-linear-gradient(45deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.menu {
+  display: flex;
+  flex-grow: 10;
+}
+
+.menu li {
+  margin-left: 20px;
+}
+
+.menu-link {
+  color: var(--menu-links);
+  transition: 0.5s ease;
+  font: 400 1rem 'Poppins', sans-serif;
+  position: relative;
+}
+
+.menu-link::before {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background-color: var(--menu-links);
+  position: absolute;
+
+  bottom: -8px;
+  transition: 0.5s ease;
+}
+
+.menu-link:hover {
+  color: var(--menu-links-hovered);
+}
+
+.menu-link:hover::before {
+  width: 100%;
+}
+
+.current-link {
+  color: var(--menu-links-hovered);
+}
+
+.current-link::before {
+  width: 100%;
+}
+
+.sponsor {
+  display: flex;
+  align-items: center;
+}
+
+.sponsor svg {
+  height: 50px;
+  color: var(--menu-links);
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.sponsor svg:hover {
+  color: var(--menu-links-hovered);
+}
+
+/* Classes reutilizaveis */
+.option-link::before {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background-color: var(--menu-links);
+  position: absolute;
+
+  bottom: -8px;
+  transition: 0.5s ease;
+}
+.option-link:hover::before {
+  width: 100%;
+}
+
+.option-link {
+  font: var(--title);
+  position: relative;
+}
+
+.option-link.cadastrar {
+  background: -webkit-radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.option-link.listar {
+  background: -webkit-linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tela-cadastrar,
+.tela-listar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tela-cadastrar {
+  position: relative;
+  background: var(--filter);
+}
+
+.tela-listar {
+  position: relative;
+  background: var(--filter-lighter);
+}
+
+.tela-cadastrar img,
+.tela-listar img {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  object-fit: cover;
+  z-index: -5;
+}
+
+.h1-title {
+  font: var(--title);
+  color: var(--text-default);
+}
+
+.meu-formulario {
+  width: 50%;
+  margin: 50px 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.meu-formulario .form-input,
+.form-btn {
+  width: 80%;
+  height: 50px;
+
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+
+  outline: none;
+
+  padding: 12px 15px;
+
+  font: var(--text-content);
+
+  margin: 10px;
+
+  transition: 0.8s ease;
+
+  background: transparent;
+
+  color: white;
+}
+.form-input:focus {
+  border-bottom: 1px solid #00f88d;
+}
+
+.form-btn {
+  width: 50%;
+
+  border: 1px solid #e0e0e0;
+  border-radius: 15px;
+
+  transition: 0.8s ease;
+
+  margin-top: 50px;
+}
+
+.form-btn:hover {
+  /* border: 1px solid #00f88d; */
+  border-radius: 50px;
+  background: #e0e0e0;
+  color: #111;
+}
+/* Telas */
+
+section {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* Telas */
+
+section#cadastrar_biblioteca,
+section#cadastrar_atendentes,
+section#cadastrar_usuarios,
+section#cadastrar_categorias,
+section#cadastrar_livros,
+section#cadastrar_reservas {
+  min-height: 100vh;
+  height: auto;
+  max-height: auto;
+}
+
+.formulario {
+  flex-direction: column;
+}
