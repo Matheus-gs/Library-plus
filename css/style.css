@@ -210,6 +210,7 @@ body {
 }
 
 .h1-title {
+  margin: 20px 0;
   font: var(--title);
   color: var(--text-default);
 }
@@ -224,7 +225,8 @@ body {
 }
 
 .meu-formulario .form-input,
-.form-btn {
+.form-btn,
+.form-option {
   width: 80%;
   height: 50px;
 
@@ -249,6 +251,14 @@ body {
   border-bottom: 1px solid #00f88d;
 }
 
+.form-option option {
+  background-color: #111;
+}
+
+.form-option::-ms-expand {
+  background: red;
+}
+
 .form-btn {
   width: 50%;
 
@@ -266,6 +276,64 @@ body {
   background: #e0e0e0;
   color: #111;
 }
+
+/* Tabelas */
+.table-listar {
+  width: 95%;
+  overflow: hidden;
+  margin: 0 0 50px 0;
+  border-radius: 10px;
+  text-align: center;
+  background: -webkit-linear-gradient(45deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 0.8) 100%);
+  /* background: #111; */
+  color: #222;
+  /* color: #ddd; */
+}
+
+.table-listar tr {
+  width: 100%;
+  height: 60px;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.table-listar tr:hover {
+  background: rgb(175, 175, 175, 0.6);
+}
+
+.table-listar th {
+  font-weight: 700;
+}
+
+.table-listar td {
+  width: calc(100% / 3);
+
+  padding: 20px;
+
+  font: var(--text-content);
+
+  border-bottom: 1px solid rgb(145, 145, 145);
+}
+
+.table-listar svg {
+  transition: 0.5s ease;
+  color: #d5d5d5;
+}
+
+.table-listar a .edit-icon:hover {
+  color: rgb(55, 55, 55);
+}
+
+.table-listar a .delete-icon:hover {
+  color: rgb(250, 42, 42);
+}
+
+.listar-resultados {
+  font: var(--text-content);
+  color: var(--text-default);
+  margin: 20px 0 50px 0;
+}
+
 /* Telas */
 
 section {
@@ -279,12 +347,17 @@ section {
 
 /* Telas */
 
-section#cadastrar_biblioteca,
-section#cadastrar_atendentes,
-section#cadastrar_usuarios,
-section#cadastrar_categorias,
-section#cadastrar_livros,
-section#cadastrar_reservas {
+section#cadastrar,
+section#editar {
+  min-height: 100vh;
+  height: auto;
+  max-height: auto;
+}
+
+section#listar,
+section#listar {
+  flex-direction: column;
+  justify-content: flex-start;
   min-height: 100vh;
   height: auto;
   max-height: auto;

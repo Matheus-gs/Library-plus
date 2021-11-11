@@ -67,11 +67,13 @@
     <?php
 
     include("./connect.php");
+
     // 
     $_page = @$_REQUEST['page'];
     // 
 
     switch ($_page) {
+        // Bibliotecas
       case 'bibliotecas':
         include("./pages/bibliotecas/bibliotecas.php");
         break;
@@ -81,6 +83,10 @@
       case 'listar_bibliotecas':
         include("./pages/bibliotecas/listar_bibliotecas.php");
         break;
+      case 'editar_biblioteca':
+        include("./pages/bibliotecas/editar_bibliotecas.php");
+        break;
+        // Atendentes
       case 'atendentes':
         include("./pages/atendentes/atendentes.php");
         break;
@@ -90,6 +96,10 @@
       case 'listar_atendentes':
         include("./pages/atendentes/listar_atendentes.php");
         break;
+      case 'editar_atendentes':
+        include("./pages/atendentes/editar_atendentes.php");
+        break;
+        // Usuários
       case 'usuarios':
         include("./pages/usuarios/usuarios.php");
         break;
@@ -99,6 +109,7 @@
       case 'listar_usuarios':
         include("./pages/usuarios/listar_usuarios.php");
         break;
+        // Categorias
       case 'categorias':
         include("./pages/categorias/categorias.php");
         break;
@@ -108,6 +119,7 @@
       case 'listar_categorias':
         include("./pages/categorias/listar_categorias.php");
         break;
+        // Livros
       case 'livros':
         include("./pages/livros/livros.php");
         break;
@@ -117,6 +129,7 @@
       case 'listar_livros':
         include("./pages/livros/listar_livros.php");
         break;
+        // Reservas
       case 'reservas':
         include("./pages/reservas/reservas.php");
         break;
@@ -126,6 +139,7 @@
       case 'listar_reservas':
         include("./pages/reservas/listar_reservas.php");
         break;
+        // Home
       default:
         include("./pages/bibliotecas/bibliotecas.php");
     }
