@@ -1,12 +1,12 @@
-CREATE TABLE aluno (
-  id_aluno INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  nome_aluno VARCHAR(100) NULL,
-  end_aluno VARCHAR(100) NULL,
-  email_aluno VARCHAR(100) NULL,
-  fone_aluno VARCHAR(20) NULL,
-  data_nasc_aluno DATE NULL,
-  genero_aluno VARCHAR(20) NULL,
-  PRIMARY KEY(id_aluno)
+CREATE TABLE usuario (
+  id_usuario INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  nome_usuario VARCHAR(100) NULL,
+  end_usuario VARCHAR(100) NULL,
+  email_usuario VARCHAR(100) NULL,
+  fone_usuario VARCHAR(20) NULL,
+  data_nasc_usuario DATE NULL,
+  genero_usuario VARCHAR(20) NULL,
+  PRIMARY KEY(id_usuario)
 );
 
 CREATE TABLE atendente (

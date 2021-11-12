@@ -17,7 +17,11 @@
 
     if ($count == 0) {
 
-      print "<a href='?page=cadastrar_atendentes >Clique aqui para cadastrar atendentes</a>";
+      echo ('
+
+      <a href="?page=cadastrar_atendentes" >Clique aqui para cadastrar atendentes</a>
+      
+      ');
       // 
     } else if ($count !== 0) {
       // 

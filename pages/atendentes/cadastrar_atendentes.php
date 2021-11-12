@@ -6,7 +6,7 @@
 
   <form method="POST" class="meu-formulario">
 
-    <input type="text" class="form-input" name="nome_atendente" placeholder="Nome do atendente">
+    <input type="text" class="form-input" name="nome_atendente" placeholder="Nome do atendente" required size="100" maxlength="100">
 
     <select class="form-option" name="nome_biblioteca" placeholder="Nome da biblioteca">
 

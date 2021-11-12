@@ -7,36 +7,52 @@ if (isset($_GET['delete'])) {
   // 
   print "<script type='text/javascript'>location.href='?page=listar_bibliotecas';</script>";
 }
+?>
+
+<!-- Preenchendo os campos com os valores atuais -->
+<?php
+if (isset($_REQUEST['editar'])) {
+
+  $id = (int)$_GET['editar'];
+
+  $sql = $pdo->prepare("SELECT * FROM biblioteca WHERE id_biblioteca =" . $id);
+  $sql->execute();
+
+  $fetchBiblioteca = $sql->fetchAll();
+
+  $nome_biblioteca = 'nome_biblioteca';
+  $endereco_biblioteca = 'end_biblioteca';
+
+  foreach ($fetchBiblioteca as $key => $value) {
+    $nome_biblioteca_atual = $value[$nome_biblioteca];
+    $endereco_biblioteca_atual = $value[$endereco_biblioteca];
+  }
 
 ?>
 
-<!-- Editando -->
+  <section id="editar" class="tela-cadastrar formulario">
+
+    <img src="../../assets/images/cadastrar_bibliotecas.jpg" alt="">
+
+    <h1 class=" h1-title">Editar Biblioteca</h1>
+
+    <form method="POST" class="meu-formulario">
+
+      <input type="hidden" name="cadastrar_biblioteca">
+
+      <input type="text" class="form-input" name="nome_biblioteca" value="<?php echo $nome_biblioteca_atual ?>" required size="100" maxlength="100">
+
+      <input type="text" class="form-input" name="endereco_biblioteca" value="<?php echo $endereco_biblioteca_atual ?>" required size="100" maxlength="100">
+
+      <button class="form-btn">Editar</button>
+
+    </form>
+
+  </section>
+
 <?php
 
-
-echo ('
-  <section id="editar" class="tela-cadastrar formulario">
-  
-  
-    <h1 class=" h1-title">Editar Biblioteca</h1>
-  
-    <form method="POST" class="meu-formulario">
-  
-      <input type="hidden" name="cadastrar_biblioteca">
-  
-      <input type="text" class="form-input" name="nome_biblioteca" placeholder="Nome da biblioteca" required size="100" maxlength="100">
-  
-      <input type="text" class="form-input" name="endereco_biblioteca" placeholder="Endereço da biblioteca" required size="100" maxlength="100">
-  
-      <button class="form-btn">Editar</button>
-  
-    </form>
-  
-  </section>
-');
-
-if (isset($_REQUEST['editar'])) {
-
+  // Editando
   $nome_biblioteca = @$_REQUEST['nome_biblioteca'];
   $endereco_biblioteca = @$_REQUEST['endereco_biblioteca'];
 
@@ -46,7 +62,11 @@ if (isset($_REQUEST['editar'])) {
 
     try {
 
-      $sql = "UPDATE biblioteca SET nome_biblioteca='$nome_biblioteca', end_biblioteca='$endereco_biblioteca' WHERE id_biblioteca=" . $id;
+      $sql = "UPDATE biblioteca SET 
+      nome_biblioteca='{$nome_biblioteca}',
+      end_biblioteca='{$endereco_biblioteca}'
+      
+      WHERE id_biblioteca=" . $id;
 
       $stmt = $pdo->prepare($sql);
 
@@ -60,6 +80,4 @@ if (isset($_REQUEST['editar'])) {
 
   $pdo = null;
 }
-
-
 ?>

@@ -109,6 +109,9 @@
       case 'listar_usuarios':
         include("./pages/usuarios/listar_usuarios.php");
         break;
+      case 'editar_usuarios':
+        include("./pages/usuarios/editar_usuarios.php");
+        break;
         // Categorias
       case 'categorias':
         include("./pages/categorias/categorias.php");
@@ -118,6 +121,9 @@
         break;
       case 'listar_categorias':
         include("./pages/categorias/listar_categorias.php");
+        break;
+      case 'editar_categorias':
+        include("./pages/categorias/editar_categorias.php");
         break;
         // Livros
       case 'livros':
@@ -129,6 +135,9 @@
       case 'listar_livros':
         include("./pages/livros/listar_livros.php");
         break;
+      case 'editar_livros':
+        include("./pages/livros/editar_livros.php");
+        break;
         // Reservas
       case 'reservas':
         include("./pages/reservas/reservas.php");
@@ -138,6 +147,9 @@
         break;
       case 'listar_reservas':
         include("./pages/reservas/listar_reservas.php");
+        break;
+      case 'editar_reservas':
+        include("./pages/reservas/editar_reservas.php");
         break;
         // Home
       default:
