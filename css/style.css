@@ -288,6 +288,7 @@ body {
   /* background: #111; */
   color: #222;
   /* color: #ddd; */
+  padding: 0 20px;
 }
 
 .table-listar tr {
@@ -306,13 +307,12 @@ body {
 }
 
 .table-listar td {
-  width: calc(100% / 3);
-
-  padding: 20px;
+  /* width: calc(100% / 3); */
+  /* padding: 20px; */
 
   font: var(--text-content);
 
-  border-bottom: 1px solid rgb(145, 145, 145);
+  border-bottom: 1px solid rgba(145, 145, 145, 0.5);
 }
 
 .table-listar svg {

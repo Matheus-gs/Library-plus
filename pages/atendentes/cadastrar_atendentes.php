@@ -39,14 +39,20 @@
 <?php
 
 try {
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-  $sql = "INSERT INTO atendente (id_atendente, biblioteca_id_biblioteca, nome_atendente)
-          VALUES (null, '{$_POST['nome_biblioteca']}', '{$_POST['nome_atendente']}')";
+  $nome_biblioteca = @$_POST['nome_biblioteca'];
+  $nome_atendente = @$_POST['nome_atendente'];
 
-  $pdo->exec($sql);
 
-  echo "<script> location.href = '?page=listar_atendentes';</script>";
+  if ($nome_biblioteca !== null and $nome_atendente !== null) {
+
+    $sql = "INSERT INTO atendente (id_atendente, biblioteca_id_biblioteca, nome_atendente)
+            VALUES (null, '{$nome_biblioteca}', '{$nome_atendente}')";
+
+    $pdo->exec($sql);
+
+    echo "<script> location.href = '?page=listar_atendentes';</script>";
+  }
   // 
 } catch (PDOException $e) {
   // 
