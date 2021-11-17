@@ -28,51 +28,66 @@ if (isset($_REQUEST['editar'])) {
     $id_categoria_atual = $value[$id_categoria];
     $nome_categoria_atual = $value[$nome_categoria];
   }
-
+}
 ?>
-  <section id="editar" class="tela-cadastrar formulario">
 
-    <img src="../../assets/images/cadastrar_categorias.jpg" alt="">
+<!--  -->
+<section id="editar" class="tela-cadastrar formulario">
 
-    <h1 class=" h1-title">Editar Categoria</h1>
+  <img src="../../assets/images/cadastrar_categorias.jpg" alt="">
 
-    <form method="POST" class="meu-formulario">
+  <h1 class=" h1-title">Editar Categoria</h1>
 
-      <input type="hidden" name="cadastrar_atendente">
+  <form method="POST" class="meu-formulario">
 
-      <input type="text" class="form-input" name="nome_categoria" value="<?php echo $nome_categoria_atual ?>" required size="100" maxlength="100">
+    <input type="hidden" name="cadastrar_atendente">
 
-      <button class="form-btn">Editar</button>
+    <input type="text" class="form-input" name="nome_categoria" value="<?php echo $nome_categoria_atual ?>" required size="100" maxlength="100">
 
-    </form>
+    <button class="form-btn">Editar</button>
 
-  </section>
+  </form>
+
+</section>
 
 <?php
-  // Editando
-  $nome_categoria = @$_POST['nome_categoria'];
+// Editando
+$nome_categoria = @$_POST['nome_categoria'];
 
-  if ($nome_categoria !== null) {
+$registro_categoria = $pdo->prepare("SELECT * FROM categoria WHERE nome_categoria = '{$nome_categoria}'");
+$registro_categoria->execute();
+
+$registro_categoria_num_rows = $registro_categoria->rowCount();
+
+try {
+
+  if ($registro_categoria_num_rows > 0) {
+
+    echo ('
+    
+    <script type="text/javascript">alert("Não é possível cadastrar categorias iguais")</script>
+    
+    ');
+  } else if ($nome_categoria !== null and $registro_categoria_num_rows == 0) {
 
     $id = (int)$_GET['editar'];
 
-    try {
+    $sql = "UPDATE categoria SET nome_categoria='{$nome_categoria}' WHERE id_categoria='{$id}'";
 
-      $sql = "UPDATE categoria SET 
-      nome_categoria='{$nome_categoria}'
+    $stmt = $pdo->prepare($sql);
 
-      WHERE id_categoria=" . $id;
+    $stmt->execute();
 
-      $stmt = $pdo->prepare($sql);
-
-      $stmt->execute();
-
-      echo  "<script>location.href='?page=listar_categorias';</script>";
-    } catch (PDOException $e) {
-      echo $sql . "<br>" . $e->getMessage();
-    }
+    echo  "<script>location.href='?page=listar_categorias';</script>";
+    // 
   }
 
-  $pdo = null;
+  // 
+} catch (PDOException $e) {
+  // 
+  echo $sql . "<br>" . $e->getMessage();
 }
+// 
+$pdo = null;
+
 ?>

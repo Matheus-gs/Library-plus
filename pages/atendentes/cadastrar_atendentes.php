@@ -10,7 +10,7 @@
 
     <select class="form-option" name="nome_biblioteca" placeholder="Nome da biblioteca">
 
-      <option>Selecione uma biblioteca</option>
+      <option value="#">Selecione uma biblioteca</option>
 
       <?php
 
@@ -19,7 +19,6 @@
 
 
       $fetchBiblioteca = $sql->fetchAll();
-
 
 
       foreach ($fetchBiblioteca as $key => $value) {
@@ -40,24 +39,46 @@
 
 try {
 
-  $nome_biblioteca = @$_POST['nome_biblioteca'];
   $nome_atendente = @$_POST['nome_atendente'];
+  $nome_biblioteca = @$_POST['nome_biblioteca'];
 
 
-  if ($nome_biblioteca !== null and $nome_atendente !== null) {
+  if ($nome_atendente !== null and $nome_biblioteca !== null and $nome_biblioteca !== "#") {
 
-    $sql = "INSERT INTO atendente (id_atendente, biblioteca_id_biblioteca, nome_atendente)
-            VALUES (null, '{$nome_biblioteca}', '{$nome_atendente}')";
+    $sql = "INSERT INTO atendente (
+              id_atendente,
+              nome_atendente,
+              biblioteca_id_biblioteca
+            )
+            VALUES (
+              null, 
+              '{$nome_atendente}',
+              '{$nome_biblioteca}' 
+            )";
 
     $pdo->exec($sql);
 
     echo "<script> location.href = '?page=listar_atendentes';</script>";
+    // 
+  } else if ($nome_biblioteca === "#") {
+    // 
+    echo ('
+        
+        <script type="text/javascript">
+
+          alert("Por favor selecione uma biblioteca ou cadastre uma nova biblioteca antes de cadastrar um atendente");
+
+        </script>
+        
+    ');
+    // 
   }
   // 
 } catch (PDOException $e) {
   // 
   echo $sql . "<br>" . $e->getMessage();
+  // 
 }
-
+// 
 $pdo = null;
 ?>

@@ -3,9 +3,9 @@
 
 // Dados de conexão
 $hostname = "localhost";
-$database = 'testdb';
-$username = 'root';
-$password = 'rubik';
+$database = '';
+$username = '';
+$password = '';
 
 // String de conexão PDO
 $connection_string = 'mysql:host=' . $hostname . ';dbname=' . $database;

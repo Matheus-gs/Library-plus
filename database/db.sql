@@ -54,5 +54,3 @@ CREATE TABLE reserva (
   INDEX aluno_has_livro_FKIndex2(livro_id_livro),
   INDEX reserva_FKIndex3(atendente_id_atendente)
 );
-
-

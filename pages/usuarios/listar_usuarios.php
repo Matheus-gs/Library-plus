@@ -18,7 +18,7 @@
     if ($count == 0) {
       echo ('
 
-      <a href="?page=cadastrar_usuarios" >Clique aqui para cadastrar usuarios</a>
+        <a href="?page=cadastrar_usuarios" >Clique aqui para cadastrar usuarios</a>
       
       ');
       // 
@@ -26,21 +26,22 @@
       // 
       echo ('
       
-      <tr>
-      <!-- Colunas -->
-      <th>Id</th>
-      <th>Nome</th>
-      <th>Email</th>
-      <th>Telefone</th>
-      <th>Endereço</th>
-      <th>Data de nascimento</th>
-      <th>Gênero</th>
+        <tr>
 
-      <!-- Ações -->
-      <th></th>
-      <th></th>
+         <!-- Colunas -->
+         <th>Id</th>
+         <th>Nome</th>
+         <th>Email</th>
+         <th>Telefone</th>
+         <th>Endereço</th>
+         <th>Data de nascimento</th>
+         <th>Gênero</th>
 
-    </tr>
+         <!-- Ações -->
+         <th></th>
+         <th></th>
+
+        </tr>
 
       ');
     }
@@ -56,16 +57,32 @@
     $data_nasc_usuario = 'data_nasc_usuario';
     $genero_usuario = 'genero_usuario';
 
+    function Mask($mask, $str)
+    {
+
+      $str = str_replace(" ", "", $str);
+
+      for ($i = 0; $i < strlen($str); $i++) {
+        $mask[strpos($mask, "#")] = $str[$i];
+      }
+
+      return $mask;
+    }
+
     foreach ($fetchAtendente as $key => $value) {
+
+      $data = strtotime($value['data_nasc_usuario']);
+      $nova_data = date('d-m-Y', $data);
+
       print "<tr>";
 
       // Colunas
       print "<td>" . $value[$id_usuario] . "</td>";
       print "<td>" . $value[$nome_usuario] . "</td>";
       print "<td>" . $value[$email_usuario] . "</td>";
-      print "<td>" . $value[$telefone_usuario] . "</td>";
+      print "<td>" . Mask("(##) #####-####", $value[$telefone_usuario]) . "</td>";
       print "<td>" . $value[$endereco_usuario] . "</td>";
-      print "<td>" . $value[$data_nasc_usuario] . "</td>";
+      print "<td>" .  str_replace('-', '/', $nova_data) . "</td>";
       print "<td>" . $value[$genero_usuario] . "</td>";
 
 

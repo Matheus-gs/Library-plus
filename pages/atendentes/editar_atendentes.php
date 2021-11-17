@@ -1,7 +1,6 @@
 <!-- Deletando -->
 <?php
 if (isset($_GET['delete'])) {
-
   $id = (int)$_GET['delete'];
   $pdo->exec("DELETE FROM atendente WHERE id_atendente=" . $id);
   // 
@@ -40,6 +39,7 @@ if (isset($_REQUEST['editar'])) {
     $nome_biblioteca_atual = $value[$nome_biblioteca];
   }
 ?>
+  <!-- Tela -->
   <section id="editar" class="tela-cadastrar formulario">
 
     <img src="../../assets/images/cadastrar_atendentes.jpg" alt="">
@@ -73,7 +73,7 @@ if (isset($_REQUEST['editar'])) {
   $nome_atendente = @$_POST['nome_atendente'];
   $nome_biblioteca = @$_POST['nome_biblioteca'];
 
-  if ($nome_biblioteca !== null and $nome_atendente !== null) {
+  if ($nome_atendente !== null  and $nome_biblioteca !== null) {
 
     $id = (int)$_GET['editar'];
 
@@ -90,7 +90,9 @@ if (isset($_REQUEST['editar'])) {
       $stmt->execute();
 
       echo  "<script>location.href='?page=listar_atendentes';</script>";
+      // 
     } catch (PDOException $e) {
+      // 
       echo $sql . "<br>" . $e->getMessage();
     }
   }

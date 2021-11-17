@@ -30,8 +30,8 @@
       <tr>
       <!-- Colunas -->
       <th>Id</th>
-      <th>Biblioteca</th>
       <th>Nome Atendente</th>
+      <th>Biblioteca</th>
 
       <!-- Ações -->
       <th></th>
@@ -54,8 +54,8 @@
 
       // Colunas
       print "<td>" . $value[$id_atendente] . "</td>";
-      print "<td>" . $value[$nome_biblioteca] . "</td>";
       print "<td>" . $value[$nome_atendente] . "</td>";
+      print "<td>" . $value[$nome_biblioteca] . "</td>";
 
 
       //===== Ações =====//

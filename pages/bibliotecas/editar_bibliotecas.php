@@ -73,11 +73,14 @@ if (isset($_REQUEST['editar'])) {
       $stmt->execute();
 
       echo  "<script>location.href='?page=listar_bibliotecas';</script>";
+      // 
     } catch (PDOException $e) {
+      // 
       echo $sql . "<br>" . $e->getMessage();
+      // 
     }
   }
-
+  // 
   $pdo = null;
 }
 ?>
